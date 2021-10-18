@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block main%}
+<div class="container-right">
+    <h5>HomeVisit Detail</h5><br>
+	<form method="GET" >
+		<input class="sinput" type="text" name="q" value="{{request.GET.q}}" placeholder="Search in student">
+			 <br>
+			 <br>
+		 <button class="btn btn-primary" type="submit" value="Search" name="submit">Search</button>
+	</form>
+	<br>
+		{% if submitbutton == 'Search' and request.GET.q != '' %}
+		{%if results%}
+		<ul>
+			{%for result in results %}
+				<li>
+					<a href="{% url 'main:visit-detail' result.id %}"><h2>Visit to {{result.student}} on {{result.date}} conducted by {{result.staff_to_visit}} </h2></a>			
+				</li>
+			{%endfor%}			
+		</ul>
+		{%else%}
+		<br>
+		<br>
+		<h4>No Such Visits Found!!!</h4>
+		{%endif%}
+		{%endif%}
+</div>
+{%endblock%}

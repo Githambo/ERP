@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block main%}
+<div class="container-right">
+    <h5>Enter Parent Detail</h5><br>
+	<form method="GET" >
+		<input class="sinput" type="text" name="q" value="{{request.GET.q}}" placeholder="Search in student">
+			 <br>
+			 <br>
+		 <button class="btn btn-primary" type="submit" value="Search" name="submit">Search</button>
+	</form>
+	<br>
+		{% if submitbutton == 'Search' and request.GET.q != '' %}
+		{%if results%}
+		<ul>
+			{%for result in results %}
+				<li>
+					<a href="{% url 'main:parent-detail' result.id %}"><h2>{{result.first_name}} {{result.surname_name}} {{result.second_name}} </h2></a>			
+				</li>
+			{%endfor%}			
+		</ul>
+		{%else%}
+		<br>
+		<br>
+		<h4>No Student Found!!!</h4>
+		{%endif%}
+		{%endif%}
+</div>
+{%endblock%}

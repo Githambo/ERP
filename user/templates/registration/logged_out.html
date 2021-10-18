@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%}
+	Log-Out Page
+{%endblock%}
+
+{% block header %}
+		<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="/"><i class="nav-icon fas fa-home">Murumba CDC</a></i>				
+								
+			</ul>			
+		</div>		
+	</nav>
+{% endblock %}
+
+
+{%block main%}
+
+	<div class="login-">
+		<div class="login-form">
+			<b><p>You have successfully Logged Out</p></b><a class="btn btn-primary" href="{%url 'user:login'%}">Login Again</a>
+		</div>
+	</div>
+
+
+{%endblock%}
+
+
+{%block left-block%}
+{%endblock%}

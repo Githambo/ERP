@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<div class="container-right">
+		<div class="card-header">
+
+	       		<h5 class="text-center" >Perfomance for {{close}} </h5>
+	      </div>
+	     
+	      	<table style="width: 90%">
+					<tr>
+						<th>CLASS</th>
+						<th>EXAM TYPE</th>
+						<th>MARKS</th>
+						<th>GRADE</th>
+						<th>POSITION</th>
+						<th>YEAR</th>
+						
+						                
+					</tr>
+						 {% for prod in s_p %}
+					<tr>       
+						<td></td>	        
+						<td>{{prod.exam_type}}</td>      
+						<td>{{prod.marks}}</td>
+						<td>{{prod.grade}}</td>
+						<td>{{prod.position}}</td>
+						<td></td>
+						
+						
+						                             
+					</tr>		    
+						{% endfor %}
+				</table>      
+		
+	</div>
+		
+{% endblock %}

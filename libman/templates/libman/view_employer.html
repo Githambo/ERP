@@ -1,0 +1,41 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+<title>{% block title %} View Employer {% endblock %}</title>
+{% block b_main %}
+  <div>
+    <a href="{% url 'add_employer' %}">Add Employer!</a>
+  </div>
+  <div>
+    <form method="GET" action="{% url 'view_employer' %}">
+      <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search Employer">
+      <input type="submit" value="Search">
+    </form>
+  </div>
+
+  {% if employer %}
+  <table class="layout">
+    <thead>
+      <th>Employer ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Phone no.</th>
+      <th>Email</th>
+      <th>Timer</th>
+    </thead>
+  {% for emp in employer %}
+    <tr>
+      <td> {{ emp.emp_id }}</td>
+      <td>{{ emp.Fname }}</td>
+      <td>{{ emp.Lname }}</td>
+      <td>{{ emp.address }}</td>
+      <td>{{ emp.phone }}</td>
+      <td>{{ emp.email }}
+      <td>{{ emp.timer }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  {% else %}
+    <p> There are no Employer registered. </p>
+  {% endif %}
+{% endblock %}

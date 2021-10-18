@@ -1,0 +1,13 @@
+{% extends 'libman/home.html' %}
+{% load static %}
+{% block title %} Book Return {% endblock %}
+{% block content %}
+
+  <h3>Return Book.</h3>
+  <form class="" method="post">
+    {{ r_form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock content %}

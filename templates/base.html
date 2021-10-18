@@ -1,0 +1,473 @@
+{% load static %}
+{% load crispy_forms_tags%}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>ACK BUDOKOMI CDC</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet"
+    href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/Datatables/datatables.min.css' %}" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+    rel="stylesheet">
+</head>
+
+<body
+  class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+              class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="" class="nav-link"><i class="fa fa-home"></i></a>
+        </li>
+       
+      </ul>
+
+
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'user:logout' %}" class="dropdown-item">
+              <i class="fas fa-sign-out"></i> Sign out
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true"
+            href="#" role="button"><i class="fas fa-th-large"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      {% block main %}
+      <a href="{% url 'main:index' %}" class="brand-link">Dash Board</a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column"
+            data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="{% url 'main:students-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  students
+                </p>
+              </a>
+            </li>         
+          
+
+          
+            
+            <li class="nav-header">Finance</li>
+            <li class="nav-item">
+              <a href="{% url 'finance:invoice-create' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Create Contribution
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'finance:invoice-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Parent Contribution
+                </p>
+              </a>
+            </li>
+
+             <li class="nav-header">Library</li>
+            <li class="nav-item">
+              <a href="{% url 'home' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Library
+                </p>
+              </a>
+            </li>
+            <!--<li class="nav-item">
+              <a href="{% url 'view_ebook' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  E-books
+                </p>
+              </a>
+            </li>-->
+             <li class="nav-header">Consumables</li>
+            <li class="nav-item">
+              <a href="{% url 'asset:addition' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Add 
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'asset:download-register' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Report
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-header">Asset</li>
+            <li class="nav-item">
+              <a href="{% url 'asset:asset-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Add Asset
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'asset:download-register' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Download report
+                </p>
+              </a>
+            </li>
+
+
+             <li class="nav-header">HomeVisit</li>
+            <li class="nav-item">
+              <a href="{% url 'main:add-homevisit' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Shedule HomeVisit
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'main:visit-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Homevisit reports
+                </p>
+              </a>
+            </li>
+
+             <li class="nav-header">Gift</li>
+            <li class="nav-item">
+              <a href="{% url 'main:gift-allocation' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Allocate Gift
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'main:gift-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Gift report
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-header">Leave</li>
+            <li class="nav-item">
+              <a href="{% url 'main:leave-create' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  Create
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'main:leave-list' %}" class="nav-link">
+                <i class="nav-icon fas fa-money-bill-alt"></i>
+                <p>
+                  report
+                </p>
+              </a>
+            </li>
+
+
+            
+                  
+                  
+                  
+                
+         
+            
+            <li class="nav-header">Others</li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                 Change Period  &nbsp;&nbsp;<i class="fas fa-angle-left right"></i>
+                 
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'corecode:current-session' %}" class="nav-link">
+                    <i class="nav-icon fas fa-bars"></i>
+                    <p>
+                      Set new Period
+                    </p>
+                  </a>
+                </li>
+               
+            </ul>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Management  &nbsp;&nbsp;<i class="fas fa-angle-left right"></i>
+                 
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'corecode:sessions' %}" class="nav-link">
+                    <i class="nav-icon fas fa-bars"></i>
+                    <p>
+                      Year
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'corecode:terms' %}" class="nav-link">
+                    <i class="nav-icon fas fa-bars"></i>
+                    <p>
+                      Month
+                      <i class="right"></i>
+                    </p>
+                  </a>
+                </li>
+            </ul>
+        </li>
+
+
+							   
+
+
+			
+					
+							
+									
+				</ul>
+
+					
+			</nav>
+		
+						
+		</div>
+	</aside>
+           
+          
+    {% endblock%}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-1">
+            <div class="col-sm-8">
+              <h1>{% block title %}{% endblock title %}</h1>
+            </div>
+            <div class="col-sm-4">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item">{% block breadcrumb %}here{% endblock breadcrumb %}</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              {% block fullcard %}
+              <div class="card">
+                {% block content-header %}{% endblock content-header %}
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+               {% block content %}
+              <div class="card-deck">
+			    <div class="card">
+			      <div class="card-header">
+			        <h5>Incoming Notification</h5>
+			      </div>
+			      <div class="card-body">
+			      	<p class="card-text"><b><u>TODAY NOTIFICATIONS </u></b><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{number_of_notifications}}</p>
+
+			        <a href="{% url 'main:not-list' %}" class="btn btn-primary">View Details</a>
+			      </div>
+			    </div>
+			    <div class="card">
+			      <div class="card-header">
+			        <h5>Create Outgoing Notification</h5>
+			      </div>
+
+			      <a href="{% url 'main:send-message'%}" class="btn btn-primary">Create Message to all</a><br>
+			       <a href="{% url 'main:send-selected'%}" class="btn btn-primary">Create Message to specific</a>
+			      
+			      <div class="card-body">
+			       		<form method="GET">
+			       			{% csrf_token %}
+			       			{{form|crispy}}
+			       			
+			      			
+
+			      		<a class="btn btn-primary" href="{% url 'main:send-sms' %}">Send</a>
+			      	</form>
+			       
+			      </div>
+			    </div>
+			  </div><br>
+			  <div class="notifications">
+			  	{% if perms.main.can_approve_leave %}
+				  	{% if order_list %}
+						{% for list in order_list%}
+							<h5><li>
+								 <a href="{% url 'main:leave-detail' list.id %}">Leave Request for {{list.staff}} from {{list.start_date}} to {{list.end_date}}</a>
+							</li></h5>
+						{%endfor%}  	
+					
+					{%endif%}
+				{% endif %}
+				
+				{% if user_approved %}
+					{% for leave in user_approved %}
+							<li>
+							 <a href="{% url 'main:leave-close' leave.id%}">Dear {{user}} your Leave request has been <b>{{leave.status}}<b></a>	 		
+							</li>
+					{%endfor%}
+				{% endif %}
+				{% if user_rejected %}
+					{% for leave in user_rejected %}
+							<li>
+							 <a href="{% url 'main:leave-close' leave.id%}">Dear {{user}} your Leave request has been <b>{{leave.status}}<b></a>	 		
+							</li>
+					{%endfor%}
+				{% endif %}
+
+
+			  	
+			  </div>
+						
+		</div>	
+
+               {% endblock content %}
+                    </div>
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+
+              </div>
+              {% endblock fullcard %}
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!--/. container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'dist/js/jquery.formset.js' %}"> </script>
+  <!-- Bootstrap -->
+  <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <script
+    src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+
+  <!-- AdminLTE App -->
+  <script src="{% static 'dist/js/adminlte.js' %}"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="{% static 'dist/js/demo.js' %}"></script>
+
+  {% if messages %}
+  {% for message in messages %}
+  <script type=text/javascript>
+    toastr.options.progressBar = true;
+    toastr.{{ message.tags }}('{{ message }}')
+  </script>
+  {% endfor %}
+  {% endif %}
+
+  <script src="{% static 'plugins/Datatables/datatables.min.js' %}"></script>
+
+  <script>
+    (function ($) {
+      $('.clickable-row').css('cursor', 'pointer');
+      $(".clickable-row").click(function () {
+        window.location = $(this).data("href");
+      });
+    })(jQuery)
+
+  </script>
+
+  {% block morejs %}
+
+  {% endblock morejs %}
+
+
+
+</body>
+
+</html>
+
+

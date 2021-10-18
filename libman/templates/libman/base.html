@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Home | Library Management System {% endblock %}</title>
+	<link rel="shortcut icon" href="http://apps.operce.com/lms//public/images/favicon.ico">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'dist/css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'dist/css/fontawesome.min.css' %}" />
+	<script type="text/javascript" src="{% static 'dist/js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dist/js/script.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dist/js/charts.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dist/js/selectivizr-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'dist/js/superfish.js' %}"></script>
+
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="main clearfix">
+			<aside class="left-bar">
+				<div class="row logo-back">
+					<div class="col logo">
+						<a href="{% url 'home' %}"><img src="" width="200px"></a>
+					</div>
+				</div>
+				<div id="main-menu-wrapper" class="menu">
+					<ul id="main-menu">
+						<li><a href="{% url 'home' %}"><i class="fa fa-money-check"></i><span>Dashboard</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_books' %}"><i class="fa fa-book" aria-hidden="true"></i><span>Books</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_student' %}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Student</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_ebook' %}"><i class="fa fa-users" aria-hidden="true"></i><span>E-Library</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_issue' %}"><i class="fa fa-chart-bar"></i><span>Issue</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'return_book' %}"><i class="fa fa-bell"></i><span>Return</span><i class="fa fa-angle-right pull-right"></i></a></li>
+					</ul>
+				</div>
+				<div class="footer">
+					<p>LMS - <a href="#">MRCC Kotur Libary</a></p>
+				</div>
+			</aside>
+
+			<aside class="right-bar">				<div class="row header">
+					<div class="col admin-menu">
+							<div class="row __mobile">
+		<span class="placeholder">Secondary Menu <i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+		<button class="__nav-icon __nav-icon-x">
+		  <span>Menu</span>
+		</button>
+	</div>
+	<div class="secondary-menu">
+		<ul>
+
+			
+			<li class="right"><a href="{% url 'admin:index' %}"><i class="fa fa-user-circle" aria-hidden="true"></i> Admin page</a></li>
+
+			<li class="right"><a href="">welcome:{{user}}<i class="fa fa-sign-out-alt" aria-hidden="true"></i> Logout</a></li>
+		</ul>
+	</div>
+	<div class="popup-container" id="modal_manually">
+		<div class="popup-window popup-window-small">
+			<div class="popup-header"><i class="fa fa-pencil"></i> Please fill details<a href="#" class="popup-close right" data-href="modal"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+			<div class="popup-content">
+
+						<form action="#" data-action="http://apps.operce.com/lms//home/changepassword" id="form" class="clearfix form form_ajax" method="post">
+
+						<div class="row ajax_response"></div>
+						<div class="form-body">
+							<div class="input-element-half">
+								<label for="email">Email <sup>*</sup></label>
+								<input type="email" id="email" name="email">
+							</div>
+							<div class="input-element-half">
+								<label for="old">Old Password <sup>*</sup></label>
+								<input type="password" id="old" name="old">
+							</div>
+							<div class="row">
+							    <div class="input-element-half">
+									<label for="name">New Password <sup>*</sup></label>
+									<input type="password" id="name" name="new">
+								</div>
+								<div class="input-element-half">
+									<label for="name">Confirm password <sup>*</sup></label>
+									<input type="password" id="name" name="confirm">
+								</div>
+							</div>
+
+							<button type="submit" class="button send">Submit</button>
+						</div>
+					</form>
+			</div>
+		</div>
+	</div>
+
+	
+					</div>
+				</div>
+				<div class="row content">
+					{% block b_main %}
+					{% endblock %}
+				</div>
+			</aside>
+
+    </div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Students{% endblock title %}
+
+{% block breadcrumb %}
+
+<a class="btn btn-primary" href="{% url 'main:student-upload' %}"><i
+    class="fas fa-upload"></i>BULK UPLOAD</a>
+
+<a class="btn btn-primary" href="{% url 'main:add-student' %}"><i
+    class="fas fa-plus"></i> New Student</a>
+
+{% endblock breadcrumb %}
+
+
+{% block content %}
+
+
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>Student</th>
+          <th>Number</th>         
+          <th>Parent</th>
+          <th>Location</th>         
+          <th>Village</th>
+          <th>Gender</th>
+          <th>Sponsor</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+
+       	 {% for prod in object_list %}
+					<tr class='clickable-row' data-href="{% url 'main:student-detail' prod.id %}">       
+						<td>{{prod.first_name}} {{prod.surname}} {{prod.second_name}}</td>	
+						<td>{{prod.reg_number}}</td>
+						<td>{{prod.parent}}</td>       
+						<td>{{prod.location}}</td>					
+						<td>{{prod.village}}</td>
+						<td>{{prod.gender}}</td>
+						<td>{{prod.sponsor_status}}</td>
+
+						
+						                             
+					</tr>		    
+						{% endfor %}
+
+      </tbody>
+    </table>
+    <a href="{% url 'main:student-download' %}">Download the Report</a>    	
+  </div>
+
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#studenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}
+
+
+
+
+
+
+

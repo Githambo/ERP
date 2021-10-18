@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{%block main%}
+	<div class="container-right">
+		<div class="card-header">
+	       		<h5 class="text-center">ALL Notification  </h5>
+	      	</div>
+	      	<table style="width: 90%">
+					<tr>
+						<th>STUDENT</th>
+						<th>ISSUE</th>
+						<th>DETAIL</th>
+						<th>DATE</th>				
+						                
+					</tr>
+						 {% for prod in object_list %}
+					<tr>       
+						<td><a href="{% url 'main:visit-detail' prod.id %}">{{prod.id}}</a></td>	        
+						<td>{{prod.student}}</td>        
+						<td>{{prod.topic}}</td>
+						<td>{{prod.detail}}</td>
+						<td>{{prod.notification_date}}</td>			
+						
+						                             
+					</tr>		    
+						{% endfor %}
+				</table>      
+		
+	</div>
+{%endblock%}

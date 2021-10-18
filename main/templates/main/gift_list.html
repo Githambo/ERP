@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Gift List{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-right">
+
+ 
+<!--<a class="btn btn-primary" href="{% url 'finance:bulk-invoice' %}"><i
+    class="fas fa-upload"></i> Bulk Invoice</a>-->
+<a class="btn btn-primary" href="{% url 'finance:finance-report' %}"><i
+    class="fas fa-download"></i>Gift Report</a>
+  <br>
+  <br>
+
+  <div class="table-responsive">
+    <table id="invoicetable" class="table table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>          
+          <th>Student</th>
+          <th>Gift Type</th> 
+          <th>Parent</th>
+          
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for prod in object_list %}
+          <tr class='clickable-row' data-href="{% url 'main:update-status' prod.id %}">          
+         
+            <td>{{ prod.student}}</td>
+            <td>{{prod.gift_type}}</td>
+            <td>{{ prod.student.parent}}</td>
+          
+            <td><a class="btn btn-success btn-sm"
+                href="">{{prod.status}}</a></td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+{% endblock main %}
+
+
+{% block morejs %}
+<script>
+   $('#invoicetable').DataTable({
+    select: false
+    });
+</script>
+
+{% endblock morejs %}

@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block title%}
+{%endblock%}
+
+{%block main%}
+    <div class="container-right">
+    	<div class="card-header">
+	       		<h5 class="text-center">{{object}} </h5>
+	     </div>
+	<table style="width: 90%">
+		<tr>
+			<th>FROM STAFF</th>
+			<th>START DATE</th>
+			<th>END DATE</th>						
+			<th>STATUS</th>
+			<th>DAYS REQUESTED</th>
+			<th>TOTAL TAKEN</th>	
+			<th>DAYS REMAINING</th>		
+		</tr>
+		<tr>
+			<td>{{object.staff}}</td>
+			<td>{{object.start_date}}</td>
+			<td>{{object.end_date}}</td>
+			<td>{{object.status}}</td>				
+			<td>{{object.number_of_days}}</td>
+			<td>{{object.total_taken_days}}</td>	
+			<td>{{object.remaining_days}}</td>	
+						
+		</tr>		
+	</table>
+
+	
+			
+	<br>
+	{% if leaves %}
+	<p class="btn btn-primary">Leave closed</p>
+
+	{%else%}
+	{% if perms.main.can_approve_leave %}
+		<a class="btn btn-primary" href="{% url 'main:leave-approve' leave.id%}">Approve</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-primary" href="{% url 'main:leave-reject' leave.id%}">Reject</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	{% endif %}
+	{% endif %}
+
+
+	</div>
+	
+
+
+{%endblock%}

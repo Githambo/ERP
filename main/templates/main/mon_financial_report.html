@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<div class="container-right">
+		<table style="width: 100%">
+					<tr>						
+						<th>STUDENT</th>											
+						<th>MONTLY TOTAL</th>	
+						<th>MONTHLY BALANCE</th>
+									
+						                
+					</tr>
+					
+					
+					<tr>    
+
+						
+						<td>{{ss.first_name}} {{ss.surname}} {{ss.second_name}}</td>        
+						<td>{{total}}</td>
+						<td>{{balance}}</td>
+						
+						
+						
+						                             
+					</tr>	
+							    
+						
+				</table>  
+				<br>
+				<a href="{% url 'main:monthly-download' %}">Download Report</a>     
+		
+	</div>
+{% endblock %}

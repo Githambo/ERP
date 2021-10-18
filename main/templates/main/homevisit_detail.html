@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags%}
+
+{%block content%}
+	<div class="container-right">
+		<br>
+		<h2>{{object}}</h2>
+		{% if closed %}
+			<a class="btn btn-primary" href="{% url 'main:visit-close' object.id%}">CLOSE THE VISIT</a><br><br></h2>
+		{% endif %}
+		
+
+		<div id="testimonial-slider" class="image_div">
+			<div class="carousel-inner" role="listbox">
+			
+			{% for all in object.homevisitimages_set.all %}
+
+    		<div class="item"><img src="{{all.image.url}}" width="400" height="400"></td><br></div>	    	
+			{% endfor %}
+			</div>
+    	</div>
+
+    	<div class="info_div">
+	    	<b>HomeVisit Status:</b><br><p class="btn btn-primary">{{object.status}}<br></p><br>
+	    	<b>Staff  in charge :</b><br> <p class="btn btn-primary">{{object.staff_to_visit}}<br></p><br>
+	    	<b>Remarks:</b><br>{{object.report}}
+	    	
+		</div>
+		<div class="p_div">
+			{% if closed %}
+			<!--<form method="POST" enctype="multipart/form-data"  action="{% url 'main:image-upload' object.id %}">
+				{%csrf_token%}
+				{{image_form|crispy}}
+				<button class="btn btn-primary">Upload</button>
+				
+			</form>-->
+			<a class="btn btn-primary" href="{% url 'main:image-upload' object.id %}">Upload visit photos;</a><br><br>
+        	<a class="btn btn-primary" href="{% url 'main:update-remarks' object.id %}">Edit Remarks &nbsp;</a><br><br>	
+        	{% endif %}		
+				
+		</div>
+
+		
+		
+	</div>
+		
+{%endblock%}

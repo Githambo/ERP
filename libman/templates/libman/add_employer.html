@@ -1,0 +1,15 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+<title>{% block title %} Add Employer {% endblock %}</title>
+{% block b_main %}
+
+  <h3>Add New Ebook.</h3>
+  <form class="" method="post">
+    {{ e_form|crispy }}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+  </form>
+
+
+{% endblock %}

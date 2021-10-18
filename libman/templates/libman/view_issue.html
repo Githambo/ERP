@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} View Issue {% endblock %}
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'new_issue' %}"><i
+    class="fas fa-plus"></i> Create A New Issue</a>
+
+ 
+  
+
+{% endblock breadcrumb %}
+
+
+{% block content %}
+  
+
+  
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>Isbn no.</th>
+          <th>Book Name</th>
+          <th>Borrower Name</th>
+          <th>Borrower ID</th>
+          <th>Issue Date</th>
+             
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for borrow in issue %}
+          <tr class='clickable-row' data-href="">       
+            <td> {{ borrow.isbn }}</td>
+            <td>{{ borrow.book_name }}</td>
+            <td>{{ borrow.borrower_name }}</td>
+            <td>{{ borrow.borrower_id }}</td>
+            <td>{{ borrow.issue_date }}</td>         
+                                         
+          </tr>       
+            {% endfor %}
+
+      </tbody>
+    </table>
+
+{% endblock content %}
+{% block morejs %}
+<script>
+  $('#studenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}

@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block title%}
+		Mass Addition Page
+		
+{%endblock%}
+
+
+{% block content%}
+<div class="container-right">
+	<form method="post" class=add-form>
+		{{form|crispy}}		
+		{%csrf_token%}		
+		<button type="submit" class="btn btn-primary" name="action" value="SAVE">
+			POST!
+		</button>				
+	</form>
+</div>
+{%endblock content%}
+

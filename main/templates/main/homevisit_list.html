@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+	<div class="container-right">
+		<div class="card-header">
+	       		<h5 class="text-center">All Home Visit Schedules </h5>
+	     </div>
+	      	<table style="width: 80%">
+					<tr>
+					
+						<th>STUDENT</th>
+						<th>STAFF VISITING</th>
+						<th>VISITING DATE</th>
+						<th>STATUS</th>	
+						
+									
+						                
+					</tr>
+						 {% for prod in object_list %}
+					<tr  class='clickable-row' data-href="{% url 'main:visit-detail' prod.id %}">     
+							        
+						<td>{{prod.student}}</td>        
+						<td>{{prod.staff_to_visit}}</td>
+						<td>{{prod.date}}</td>
+						<td>{{prod.status}}</td>
+						
+						                             
+					</tr>		    
+						{% endfor %}
+				</table>       	
+		
+	</div>
+{%endblock%}

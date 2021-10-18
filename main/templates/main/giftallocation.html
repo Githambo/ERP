@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Gift Allocation{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-right">
+
+  <br>
+  <br>
+
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>          
+          <th>Student</th>
+          <th>Parent</th>           
+          
+          <th>Allocate Gift</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for prod in all_student %}
+          <tr class='clickable-row' data-href="">          
+         
+            <td>{{ prod}}</td>
+            <td>{{ prod.parent}}</td>
+          
+            <td><a class="btn btn-success btn-sm"
+                href="{% url 'main:gift-allocation' %}?student={{prod.id}}">Create a Gift</a></td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+{% endblock main %}
+
+
+{% block morejs %}
+<script>
+   $('#studenttable').DataTable({
+    select: false
+    });
+</script>
+
+{% endblock morejs %}

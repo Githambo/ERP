@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content-header %}
+<div class="card-header">
+  <div class="card-tools">
+    <a href="#" class="btn btn-tool">Print</a>
+    <a href="{% url 'main:student-update' object.id %}" class="btn btn-tool">
+      <i class="fas fa-edit"></i>
+    </a>
+    <a href="{% url 'main:student-delete' object.id %}" class="btn btn-tool">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+</div>
+{% endblock content-header %}
+
+{% block content %}
+    <div class="row mb-4">
+      <div class="col-sm-4">
+        <div class="row mb-2">
+
+          {% if object.passport %}
+            <img
+              src="{{ object.passport.url }}"
+              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
+          {% else %}
+            <img
+              src="{% static 'dist/img/avatar.png' %}"
+              class="float-left rounded-circle mr-3" style="width: 120px; height: 120px;">
+          {% endif %}
+
+
+          <div class="float-right">
+            <h4>{{ object.first_name }} </h4>
+            <h4>{{ object.second_name }} </h4>
+            
+          </div>
+        </div>
+       
+        <h5>{{ object.gender }} | {{ object.status }}</h5>
+
+      </div>
+      <div class="col-sm-8">
+        <div>
+          <div class="form-group border-bottom row">
+            <label class="col">
+              CELL
+            </label>
+            <div class="col">
+              {{ object.cell}}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Mobile Number
+            </label>
+            <div class="col">
+              {{ object.phone_number}}
+            </div>
+          </div>
+
+          <div class="form-group border-bottom row">
+            <label class="col">
+              LOCATION
+            </label>
+            <div class="col">
+              {{ object.location }}
+            </div>
+          </div>
+          <div class="form-group border-bottom row">
+            <label class="col">
+              Comments
+            </label>
+            <div class="col">
+              {{ object.others }}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <h4>Finance Payment History</h4>
+    {% if payments %}
+      <table class="table table-sm table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>            
+            <th>Tithe Amount</th>
+            <th>date</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments %}
+            <tr class='clickable-row' data-href="">              
+              <td>{{payment.amount}}</td>
+              <td>{{payment.date}}</td>
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+        <p>There are no finance payment history for {{object}}</p>
+    {% endif %}
+
+
+
+
+{% endblock content %}

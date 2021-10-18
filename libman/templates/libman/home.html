@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home | LMS {% endblock %}
+{% block breadcrumb %}
+
+
+{% endblock breadcrumb %}
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+{% block main %}
+
+  <div class="sidebar">
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column"
+            data-widget="treeview" role="menu" data-accordion="false">
+          
+
+        
+     
+        
+            <li><a href="{% url 'home' %}"><i class="fa fa-money-check"></i><span>Dashboard</span><i class="fa fa-angle-right pull-right"></i></a></li>
+            <br>
+            
+            <li class="nav-item">
+              <a href="{% url 'view_books' %}" class="nav-link">
+                <i class="fa fa-book"></i>
+                <p>
+                  Books
+                </p>
+              </a>
+            </li>  
+
+             <li class="nav-item">
+              <a href="{% url 'view_issue' %}" class="nav-link">
+                <i class="fa fa-book"></i>
+                <p>
+                 Issue
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{% url 'return_book' %}" class="nav-link">
+                <i class="fa fa-book"></i>
+                <p>
+                 Return
+                </p>
+              </a>
+            </li>  
+            
+        </div>
+        <div class="footer">
+          <p>LMS - <a href="#">MRCC Kotur Libary</a></p>
+        </div>
+      </ul>
+    </nav>
+  </div>
+    
+{% endblock main %}
+</aside>
+{% block content %}
+
+<div class="row page-heading">
+  <h4>Home</h4>
+</div>
+
+<div class="row clearfix">
+
+
+  <div class="row graph_box">
+
+    <div class="row clearfix dashboard-heading">
+      <h3>Total Books Reports</h3>
+    </div>
+
+
+            <div class="row">
+              <noscript>
+                <div class="msg notice"><p>Javascript is required to properly run the application.</p>
+              </noscript>
+            </div>
+            <div id="overview" style="width: 600px; height: 400px; margin:0 auto;"></div>
+                      </div>
+</div>
+
+<div class="row clearfix graph_box">
+  <div class="row clearfix dashboard-heading">
+    <h3>Today's Reports</h3>
+  </div>
+  <div class="row">
+    <div class="col-4 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Today's Fine</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-4 card">
+      <div class="card-box bg-green">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Issued Books</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-4 card">
+      <div class="card-box bg-yellow">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Returned</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-4 card">
+      <div class="card-box bg-red">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Lost</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row clearfix graph_box">
+  <div class="row clearfix dashboard-heading">
+    <h3>Month's Reports</h3>
+  </div>
+  <div class="row">
+    <div class="col-5 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Current month's fine</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-5 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Total Books</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-5 card">
+      <div class="card-box bg-green">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Issued Books</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-5 card">
+      <div class="card-box bg-yellow">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Returned</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-5 card">
+      <div class="card-box bg-red">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Lost</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row clearfix graph_box">
+  <div class="row clearfix dashboard-heading">
+    <h3>Year's Reports</h3>
+  </div>
+  <div class="row">
+
+    <div class="col-5 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Current year's fine</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-5 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Total Books</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-5 card">
+      <div class="card-box bg-green">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Issued Books</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-5 card">
+      <div class="card-box bg-yellow">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Returned</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-5 card">
+      <div class="card-box bg-red">
+        <div class="card-content">
+          <h3>0</h3>
+          <p>Books Lost</p>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row clearfix graph_box">
+  <div class="row clearfix dashboard-heading">
+    <h3>Total Record till date</h3>
+  </div>
+
+
+            <div class="row">
+              <noscript>
+                <div class="msg notice"><p>Javascript is required to properly run the application.</p>
+              </noscript>
+            </div>
+            <div id="year" style="width: 1000px; height: 300px; margin:0 auto;"></div>
+                    </div>
+
+
+
+
+
+
+
+</div>
+<script type="text/javascript">
+var element =  document.getElementById('overview');
+var year =  document.getElementById('year');
+if (typeof(element) != 'undefined' && element != null)
+{
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+var data = google.visualization.arrayToDataTable([
+['Task', 'Total Books Record'],
+["Total Books",5],
+
+["Books Issued", 2],
+
+["Books Lost", 1],
+
+["Books Returned", 2]
+]);
+
+var options = {
+title: ''
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('overview'));
+
+chart.draw(data, options);
+}
+
+}
+
+if (typeof(year) != 'undefined' && year != null)
+{
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+var data = google.visualization.arrayToDataTable([
+['Record', 'Total Record',],
+["Total Books",5],
+
+["Books Issued", 2],
+
+["Books Lost", 1],
+
+["Books Returned", 2],
+
+["Total Students", 2],
+
+["Total Members", 2]
+]);
+
+var options = {
+title: 'Total Record till date',
+chartArea: {width: '40%'},
+hAxis: {
+title: 'Total Record',
+minValue: 0
+},
+vAxis: {
+title: ''
+}
+};
+
+var chart = new google.visualization.BarChart(document.getElementById('year'));
+
+chart.draw(data, options);
+}
+}
+</script>
+
+
+        <div class="footer"><p>&copy; 2021 Django Ventures Ltd<em class="address"></em></p></div>
+</div>
+
+{% endblock content %}

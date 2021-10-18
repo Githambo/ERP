@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block title%}
+{%endblock%}
+
+{%block main%}   
+    <div class="container-right">     
+    	
+    		<tr>
+    			<b>PARENT NAME:</b><br>{{object.first_name}} {{object.second_name}}<br><br>    			
+    			<b>CONTACT DETAILS:</b><br>{{object.phone_number}}<br><br>    			
+                <b>OCCUPATION:</b><br>{{object.occupation}}<br><br> 
+                <b>PARENT TO:</b><br>{{object.kid}}<br><br> 
+                
+    		</tr>
+
+    	</table>    	
+    </div>
+
+    </div>
+{%endblock%}

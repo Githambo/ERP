@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{% endblock title %}
+
+
+{% block content %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="alert">
+    <p>Are you sure you want to delete <h2>{{ object.first_name }} {{object.second_name}}</h2></p>
+    <p>All contents attached to this Member will be deleted</p>
+  </div>
+
+  <input type="submit" class="btn btn-danger" value="Confirm">
+
+</form>
+
+
+{% endblock content %}

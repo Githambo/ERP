@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block content %}
+<div class="container-right">
+<div class="row">
+  <div class="col-8">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{form|crispy}}
+
+
+      <input type="submit" class="btn btn-primary" value="Allocate Gift">
+
+    </form>
+  </div>
+
+  <div class="col-4">
+    <div class="alert alert-info" role="alert">
+      <h3>STUDENT NAME</h3>
+      <P>{{ student }}</P>
+     
+      <hr>
+      
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

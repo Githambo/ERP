@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block breadcrumb %}
+<br>
+
+<a class="btn btn-primary" href="{% url 'asset:addition' %}"><i
+    class="fas fa-plus"></i> Asset</a>
+
+    <a class="btn btn-primary" href="{% url 'asset:asset-upload' %}"><i
+    class="fas fa-upload"></i> Upload Bulk Asset</a>
+              
+
+
+
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="container-right">
+	<br>
+
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>ASSET</th>
+          <th>TAG NUMBER</th>  
+          <th>SERIAL NUMBER</th>       
+          <th>VOUCHER</th>
+          <th>CATEGORY</th>         
+          <th>LOCATION</th>
+          <th>DATE IN SERVICE</th>
+          <th>STATUS</th>
+
+          
+         
+        </tr>
+      </thead>
+      <tbody>
+
+       	 {% for prod in object_list %}
+					<tr class='clickable-row' data-href="{% url 'main:student-detail' prod.id %}">       
+						<td>{{prod.asset_description}}</td>	
+						<td>{{prod.tag_number}}</td>
+						<td>{{prod.serial_number}}</td>       
+						<td>{{prod.voucher_number}}</td>					
+						<td>{{prod.category}}</td>
+						<td>{{prod.location}}</td>
+						<td>{{prod.date_in_service}}</td>
+            <td>{{prod.status}}</td>
+
+						
+						                             
+					</tr>		    
+						{% endfor %}
+
+      </tbody>
+    </table>
+    <a href="{% url 'asset:download-register' %}">Download the Report</a>    	
+  </div>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#studenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} View Books {% endblock %}
+{% block breadcrumb %}
+<a class="btn btn-primary" href="{% url 'add_book' %}"><i
+    class="fas fa-plus"></i> New Book</a>
+
+{% endblock breadcrumb %}
+
+
+{% block content %}
+  
+  
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover" data-page-length='100'>
+      <thead class="thead-light">
+        <tr>
+          <th>Isbn no.</th>
+          <th>Book Name</th>
+          <th>Author Name</th>
+          <th>No of books</th>
+          <th>Book Details</th>
+          <th>Department</th>
+          <th>Publisher</th>
+          <th>Rack No</th>
+             
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for book in books %}
+          <tr class='clickable-row' data-href="">       
+            <td> {{ book.isbn_no }}</td>
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.author_name }}</td>
+            <td>{{ book.no_of_books }}</td>
+            <td>{{ book.book_detail }}</td>
+            <td>{{ book.department }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.rack_no }}</td>
+
+            
+                                         
+          </tr>       
+            {% endfor %}
+
+      </tbody>
+    </table>
+
+{% endblock content %}
+{% block morejs %}
+<script>
+  $('#studenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}
+
+

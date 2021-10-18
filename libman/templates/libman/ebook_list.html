@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block title%}
+{%endblock%}
+
+
+
+
+{% block content %}
+<div class="container-right">
+
+
+<a class="btn btn-primary " href="{% url 'add_ebook' %}"><i
+    class="fas fa-plus"></i> New Ebook</a>
+
+    <br>
+    <br>
+
+  <div class="row">
+    {% for prod in object_list %} 
+      <div class="col-sm-3">     
+         <br> 
+          <img src="{{ prod.image.url }}" style="width: 130px; height: 130px;"><br>
+
+           {{prod.title}}
+            <br><a href="{{ prod.document.url}}">read now</a>
+      </div> 
+      <br>          
+    {% endfor %} 
+</div>
+</div>
+                
+{%endblock%}

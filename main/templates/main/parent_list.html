@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+
+{%block main%}
+	<div class="container-right">
+		<div class="card-header">
+	       		<h5 class="text-center">All Parent </h5>
+	     </div>
+	      	<table style="width: 90%">
+					<tr>
+						<th>PARENT NAME</th>						
+						<th>PHONE NUMBER</th>
+						<th>OCCUPATION</th>
+						<th>PARENT TO</th>	
+						
+									
+						                
+					</tr>
+						 {% for prod in object_list %}
+					<tr  class='clickable-row' data-href="{% url 'main:parent-detail' prod.id %}">       
+							        
+						<td><a href="{% url 'main:parent-detail' prod.id %}">{{prod.first_name}} {{prod.second_name}}</td></a>        
+						
+						<td>{{prod.phone_number}}</td>
+						<td>{{prod.occupation}}</td>
+						<td>{{prod.kid}}</td>
+						
+						
+						                             
+					</tr>		    
+						{% endfor %}
+				</table>       	
+		
+	</div>
+{%endblock%}

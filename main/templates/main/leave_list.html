@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+
+{%block content%}
+	<div class="container-right">
+		<div class="card-header">
+	       		<h5 class="text-center" >{{user}} Leave Report </h5>
+	      </div>
+	      <h1>Current Remaining Days:{% for prod in single_user %}{{prod.remaining_days}}{% endfor %}</h1><br>
+	      	<table style="width: 90%">
+					<tr>
+						<th>START DATE</th>
+						<th>END DATE</th>
+						<th>STATUS</th>
+						<th>NUMBER OF DAYS TAKEN</th>
+						<th>TOTAL TAKEN</th>
+						<th>REMAINING DAYS</th>
+						<th>STAFF_LIST</th>
+										
+						                
+					</tr>
+						 {% for prod in single_user %}
+					<tr  class='clickable-row' data-href="{% url 'main:leave-detail' prod.id %}">       
+							        
+						<td>{{prod.start_date}}</td>       
+						<td>{{prod.end_date}}</td>
+						<td>{{prod.status}}</td>
+						<td>{{prod.number_of_days}}</td>
+						<td>{{prod.total_taken_days}}</td>
+						<td>{{prod.remaining_days}}</td>
+						<td>{{prod.staff}}</td>
+								
+						
+						                             
+					</tr>		    
+						{% endfor %}
+				</table>      
+		
+	</div>
+{%endblock%}

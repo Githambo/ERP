@@ -1,0 +1,16 @@
+{% extends 'libman/home.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block title %} Issue Book {% endblock %}
+{% block content %}
+
+  <h3>Issue Book.</h3>
+  <form class="add_new" method="post">
+    {{ i_form|crispy }}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+  </form>
+
+
+{% endblock content %}
