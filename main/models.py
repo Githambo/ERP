@@ -58,7 +58,7 @@ class Student(models.Model):
 		)
 
 	
-	centre=models.TextField(null=True,default="ACK BUDOKOMI CDC")
+	centre=models.TextField(null=True,default="NAMBALE CDC")
 
 	class Meta:
 		permissions=("can_only_view_teaching_student","can_only_view_teaching_student"),
