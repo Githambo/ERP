@@ -1,2 +1,2 @@
-release: python manage.py migrat
+release: python manage.py migrate
 web: gunicorn cdc.wsgi 
